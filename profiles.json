@@ -1,0 +1,54 @@
+{
+  "sets": [
+    {
+      "name": "Basic Adjust",
+      "buttons": [
+        { "text": "Exp +",      "color": "#3366FF" },
+        { "text": "Exp -",      "color": "#3366FF" },
+        { "text": "Contrast +", "color": "#33AA33" },
+        { "text": "Contrast -", "color": "#33AA33" },
+        { "text": "Highlights +", "color": "#FF8800" },
+        { "text": "Highlights -", "color": "#FF8800" },
+        { "text": "Shadows +", "color": "#AA55FF" },
+        { "text": "Shadows -", "color": "#AA55FF" },
+        { "text": "Whites +",  "color": "#888888" },
+        { "text": "Whites -",  "color": "#888888" },
+        { "text": "Blacks +",  "color": "#555555" },
+        { "text": "Blacks -",  "color": "#555555" },
+        { "text": "Sat +",     "color": "#FF00FF" },
+        { "text": "Sat -",     "color": "#FF00FF" },
+        { "text": "Reset",     "color": "#FF3333" },
+        { "text": "Sync",      "color": "#33FF33" }
+      ],
+      "labels": [
+        "Exposure", "Contrast", "Highlights", "Shadows",
+        "Whites", "Blacks", "Saturation", "Sync State"
+      ]
+    },
+    {
+      "name": "Color Grading",
+      "buttons": [
+        { "text": "Temp +", "color": "#3366FF" },
+        { "text": "Temp -", "color": "#3366FF" },
+        { "text": "Tint +", "color": "#33AA33" },
+        { "text": "Tint -", "color": "#33AA33" },
+        { "text": "Vibr +", "color": "#FF8800" },
+        { "text": "Vibr -", "color": "#FF8800" },
+        { "text": "Sat All +", "color": "#AA55FF" },
+        { "text": "Sat All -", "color": "#AA55FF" },
+        { "text": "Red +",  "color": "#FF5555" },
+        { "text": "Red -",  "color": "#FF5555" },
+        { "text": "Blue +", "color": "#5555FF" },
+        { "text": "Blue -", "color": "#5555FF" },
+        { "text": "Green +","color": "#55FF55" },
+        { "text": "Green -","color": "#55FF55" },
+        { "text": "Reset",  "color": "#FF3333" },
+        { "text": "Sync",   "color": "#33FF33" }
+      ],
+      "labels": [
+        "Temp/Tint", "Vibrance", "Sat All", "R/G/B",
+        "Split Tone", "Curve", "HSL", "Profile"
+      ]
+    }
+  ]
+}
