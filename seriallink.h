@@ -9,19 +9,27 @@ class SerialLink : public QObject
 public:
     explicit SerialLink(QObject *parent = nullptr);
 
-    bool open(const QString &portName, int baud = 115200);
-    void close();
-    bool isOpen() const { return m_serial.isOpen(); }
+    void setPortName(const QString &name) { m_portName = name; }
+    QString portName() const { return m_portName; }
 
-    void sendButtonEvent(quint8 buttonId, bool pressed);
-    void sendEncoderDelta(quint8 encoderId, quint8 value); // 0..127
+    void setBaudRate(int baud) { m_baudRate = baud; }
+    int baudRate() const { return m_baudRate; }
+
+    Q_INVOKABLE void connectPort();
+    Q_INVOKABLE void disconnectPort();
+
+    // Pi -> Pico: send button pressed / released
+    Q_INVOKABLE void sendButtonEvent(quint8 buttonId, bool pressed);
 
 signals:
-    void rotaryDelta(int id, int value);      // value is absolute 0..127
-    void buttonState(int id, bool pressed);
-    void errorOccurred(const QString &msg);
     void opened(const QString &portName);
     void closed();
+    void serialError(const QString &message);
+
+    // Pico -> Pi
+    void buttonState(int id, bool pressed);
+    void rotaryValue(int id, int value);  // value 0..127
+    void rawBytes(const QByteArray &bytes);
 
 private slots:
     void handleReadyRead();
@@ -29,20 +37,24 @@ private slots:
 
 private:
     void processByte(quint8 b);
-    void handleFrame(quint8 type, const quint8 *payload, quint8 payloadLen);
+    void handleFrame(quint8 type, const QByteArray &payload);
 
     QSerialPort m_serial;
+    QString m_portName;
+    int m_baudRate;
 
-    enum FrameState {
+    enum RxState {
         WaitHeader1,
         WaitHeader2,
         WaitLen,
-        WaitBody,
+        WaitType,
+        WaitPayload,
         WaitChecksum
     };
-    FrameState m_state;
-    quint8     m_len;
-    quint8     m_buf[64];
-    quint8     m_pos;
-    quint8     m_checksum;
+
+    RxState m_state;
+    quint8 m_len;
+    quint8 m_type;
+    QByteArray m_payload;
+    quint8 m_checksumAccum;
 };
