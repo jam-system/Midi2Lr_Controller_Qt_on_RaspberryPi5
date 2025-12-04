@@ -1,0 +1,302 @@
+jam@raspberrypi:~ $ history
+    1  hostname -I
+    2  sudo reboot
+    3  sudo raspi-config
+    4  sudo nano /boot/config.txt
+    5  sudo nano /boot/firmware/config.txt
+    6  sudo apt-get update
+    7  sudo apt-get upgrade
+    8  sudo apt-get install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools qtcreator qtdeclarative5-dev
+    9  sudo apt-get install qt5-qmake qtbase5-dev qtdeclarative5-dev
+   10  apt-get install qml-module-qtquick
+   11  apt-get install qml-module-qtquick*
+   12  apt-get install qtquick1-*
+   13  sudo apt-get install qtquick1-*
+   14  sudo apt-get install qml-module-qtquick*
+   15  sudo apt-get install qtquickcontrols5-*
+   16  sudo apt-get install qml-module-qtquick2
+   17  sudo apt-get install qtdeclarative5-*
+   18  sudo apt-get install qml-module-qtquick*
+   19  ls
+   20  cd Qt_Projects/
+   21  ls
+   22  cd Midi2LrController/
+   23  ls
+   24  nano i2ccontroller.cpp
+   25  sudo nano /boot/firmware/config.txt
+   26  sudo reboot
+   27  sudo raspi-gpio get 0 1
+   28  sudo i2cdetect -y 0
+   29  sudo nano /boot/firmware/config.txt
+   30  i2cdetect -l
+   31  sudo nano /boot/firmware/config.txt
+   32  sudo reboot
+   33  i2cdetect -l
+   34  sudo i2cdetect -y 0
+   35  sudo nano /boot/firmware/config.txt
+   36  sudo reboot
+   37  sudo apt update
+   38  sudo apt install -y git autotools-dev libtool autoconf     libasound2-dev libusb-dev libdbus-1-dev     libglib2.0-dev libudev-dev libical-dev libreadline-dev
+   39  git clone https://github.com/oxesoft/bluez
+   40  cd bluez/
+   41  ./bootstrap
+   42  ./configure --enable-midi --prefix=/usr --mandir=/usr/share/man             --sysconfdir=/etc --localstatedir=/var
+   43  ls /usr/lib/udev
+   44  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev
+   45  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdunitdir=/lib/systemd/system
+   46  make clean || true
+   47  rm -f config.cache
+   48  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdunitdir=/lib/systemd/system
+   49  rm -f config.cache
+   50  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdunitdir=/lib/systemd/system
+   51  ./configure --help | grep -i systemd
+   52  cd ~/bluez
+   53  make clean || true
+   54  rm -f config.cache
+   55  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdsystemunitdir=/lib/systemd/system
+   56  ls /usr/lib/systemd/user
+   57  cd ~/bluez
+   58  make clean || true
+   59  rm -f config.cache
+   60  ./configure   --enable-midi   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdsystemunitdir=/lib/systemd/system   --with-systemduserunitdir=/usr/lib/systemd/user
+   61  make
+   62  nano profiles/audio/media.c
+   63  make
+   64  cd ~/bluez
+   65  make clean || true
+   66  rm -f config.cache
+   67  ./configure   --enable-midi   --disable-obex   --prefix=/usr   --mandir=/usr/share/man   --sysconfdir=/etc   --localstatedir=/var   --with-udevdir=/usr/lib/udev   --with-systemdsystemunitdir=/lib/systemd/system   --with-systemduserunitdir=/usr/lib/systemd/user
+   68  make
+   69  sudo make install
+   70  sudo btmidi-server -v -n "RPi-BLE-MIDI".
+   71  sudo reboot
+   72  aconnect -l
+   73  which btmidi-server
+   74  ls -l /usr/bin/btmidi*
+   75  ls -l /usr/local/bin/btmidi*
+   76  which btmidi-server
+   77  ls -l /usr/bin/btmidi*
+   78  ls -l /usr/local/bin/btmidi*
+   79  aconnect -l
+   80  aseqdump -p 128:0
+   81  aseqsend -p 128:0 -n 60 -v 100
+   82  aseqsend -p 128:0 --event "note 60 100 1"
+   83  aseqsend -h
+   84  aseqsend -p 128:0 "note 60 100 1"
+   85  aseqsend --help
+   86  aseqsend -p 128:0 -s "90 3C 64"
+   87  aseqsend -p 128:0 -s "hex:90 3C 64"
+   88  printf "\x90\x3C\x64" > noteon.bin
+   89  printf "\x90\x3C\x00" > noteoff.bin
+   90  aseqsend -p 128:0 -s noteoff.bin
+   91  aseqdump -p 128:0
+   92  aseqsend -p 128:0 -s noteoff.bin
+   93  bluetoothctl show
+   94  sudo bluetoothctl
+   95  sudo btmidi-server -n "RPi-BLE-MIDI"
+   96  cd ~/bluez
+   97  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+   98  sudo apt-get install autocutsel
+   99  nano .vnc/xstartup
+  100  ls -al
+  101  nano /home/jam/.vnc/xstartup
+  102  sudo nano /home/jam/.vnc/xstartup
+  103  sudo find / -name nano vnc/xstartup
+  104  sudo find / -name nano xstartup
+  105  sudo find / -name  xstartup
+  106  vncconfig
+  107  vncconfig &
+  108  sudo vncconfig &
+  109  sudo apt install qtserialport5-dev
+  110  sudo apt-get install qtserialport5-dev
+  111  sudo apt install qtserialport5-dev
+  112  apt search qt5serial
+  113  sudo apt install libqt5serialport5-dev
+  114  ls /dev/
+  115  ls /dev/ttyACM0
+  116  ls /dev/ttyACM*
+  117  ls /dev/ttyAma10
+  118  ls /dev/ttyAMA10
+  119  ls /dev/ttyAMA*
+  120  ls /dev/ttyACM*
+  121  ls /dev/tty*
+  122  sudo nano /boot/config.txt 
+  123  sudo nano /boot/firmware/config.txt 
+  124  ls /dev/tty*
+  125  ls -l
+  126  ls -l /dev/tty*
+  127  sudo bluetoothctl
+  128  sudo btmidi-server -n "RPi-BLE-MIDI"
+  129  sudo bluetoothctl
+  130  sudo systemctl restart bluetooth
+  131  sudo bluetoothctl
+  132  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  133  sudo btmidi-server -n "RPi-BLE-MIDI"
+  134  sudo bluetoothctl
+  135  which btmidi-server
+  136  sudo nano /etc/systemd/system/btmidi.service
+  137  sudo systemctl daemon-reload
+  138  sudo systemctl enable btmidi.service
+  139  sudo systemctl start btmidi.service
+  140  systemctl status btmidi.service
+  141  sudo reboot
+  142  aconnect -l
+  143  sudo apt update
+  144  sudo apt install libasound2-dev
+  145  sudo reboot
+  146  sudo systemctl enable btmidi.service
+  147  sudo bluetoothctl
+  148  bluetoothctl
+  149  exit
+  150  systemctl status btmidi.service
+  151  sudo systemctl restart btmidi.service
+  152  systemctl status btmidi.service
+  153  sudo systemctl restart btmidi.service
+  154  systemctl status btmidi.service
+  155  sudo systemctl restart btmidi.service
+  156  systemctl status btmidi.service
+  157  sudo btmidi-server -v
+  158  sudo bluetoothctl show
+  159  sudo systemctl stop btmidi.service
+  160  sudo systemctl restart btmidi.service
+  161  sudo bluetoothctl
+  162  sudo systemctl stop btmidi.service
+  163  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  164  sudo btmgmt info
+  165  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  166  bluetoothctl
+  167  sudo btmgmt info
+  168  sudo nano /lib/systemd/system/bluetooth.service
+  169  ExecStart=/usr/libexec/bluetooth/bluetoothd --experimental
+  170  sudo systemctl daemon-reload
+  171  sudo systemctl restart bluetooth
+  172  sudo ps aux | grep bluetoothd
+  173  sudo bluetoothctl
+  174  sudo systemctl restart btmidi.service
+  175  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  176  bluetoothctl
+  177  sudo systemctl stop pipewire
+  178  sudo systemctl stop pipewire-pulse
+  179  sudo systemctl stop wireplumber
+  180  sudo nano /etc/bluetooth/main.conf
+  181  sudo systemctl restart bluetooth
+  182  sudo systemctl stop btmidi.service
+  183  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  184  sudo btmgmt le on
+  185  sudo btmgmt bredr off
+  186  sudo btmgmt connectable on
+  187  sudo btmgmt bondable on
+  188  sudo btmgmt advertising on
+  189  sudo systemctl restart bluetooth
+  190  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  191  bluetoothctl
+  192  sudo nano /etc/bluetooth/main.conf
+  193  sudo nano /etc/bluetooth/input.conf
+  194  sudo nano /etc/bluetooth/audio.conf
+  195  sudo systemctl daemon-reload
+  196  sudo systemctl restart bluetooth
+  197  sudo systemctl restart btmidi.service
+  198  sudo btmidi-server -v -n "RPi-BLE-MIDI"
+  199  cd /home/jam/Qt_Projects/Midi2LrController/build~
+  200  cd /home/jam/Qt_Projects/Midi2LrController/build
+  201  ls
+  202  rm -r*
+  203  rm -_r*
+  204  rm *
+  205  rm -R *
+  206  ls
+  207  ls
+  208  cd Qt_Projects/
+  209  ls
+  210  cd Midi2LrController/
+  211  ls
+  212  git
+  213  git init
+  214  ls -al
+  215  nano gitignore
+  216  ls
+  217  git add .
+  218  git status
+  219  git rm --cached .
+  220  git rm --cached *
+  221  git rm --cached
+  222  *.*
+  223  git rm --cached all
+  224  git rm --cached build/*
+  225  git rm --cached -r build/*
+  226  status
+  227  git status
+  228  nano gitignore
+  229  git add .
+  230  git status
+  231  git rm --cached -r build/*
+  232  git status
+  233  cp  gitignore .gitignore
+  234  ls
+  235  ls =al
+  236  ls -al
+  237  git rm --cached -r build/
+  238  git status
+  239  git add .
+  240  git status
+  241  history
+  242  ls
+  243  cd Qt_Projects/
+  244  ls
+  245  cd Midi2LrController/
+  246  ls
+  247  cd build/
+  248  ls
+  249  cd Desktop-Debug/
+  250  ls
+  251  rm -r *.*
+  252  ls
+  253  cd Qt_Projects/
+  254  ls
+  255  cd Midi2LrController/
+  256  ls
+  257  git
+  258  git status
+  259  git add .
+  260  git status
+  261  git remote add origin git@github.com:jam-system/Midi2Lr_Controller_Qt_on_RaspberryPi5.git
+  262  git branch -M main
+  263  git push -u origin main
+  264  git commit -m "initial"
+  265  git config --global user.email "bert@meelberg.net"
+  266  git commit -m "initial"
+  267  git push
+  268  git branch -M main
+  269  git push
+  270  git status
+  271  git push -u origin main
+  272  ssh-keygen -t ed25519 -C "bert@meelberg.net"
+  273  eval "$(ssh-agent -s)"
+  274  nano ~/.ssh/config
+  275  nano ~/.ssh/id_ed25519.pub
+  276  git push -u origin main
+  277  git status
+  278  exit
+  279  ls
+  280  cd Qt_Projects/
+  281  ls
+  282  rm Seriallink.cpp 
+  283  cd Midi2LrController/
+  284  git
+  285  git status
+  286  git add .
+  287  git status
+  288  git commit -m "cleanup remodev acceleration stuff"
+  289  push
+  290  git push
+  291  git status
+  292  git commit -m "removed midimanager files"
+  293  git add .
+  294  git status
+  295  git commit -m "removed midimanager files"
+  296  git push
+  297  history
+jam@raspberrypi:~ $ 
+
+
+

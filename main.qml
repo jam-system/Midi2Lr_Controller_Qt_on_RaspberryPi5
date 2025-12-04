@@ -5,8 +5,8 @@ import QtQuick.Layouts 1.15
 ApplicationWindow {
     id: root
     visible: true
-    width: 960
-    height: 600
+    width: 1280
+    height: 800
     title: "Midi2Lr Controller"
 
     function textColorFor(bg) {
@@ -20,8 +20,11 @@ ApplicationWindow {
         anchors.margins: 12
         spacing: 12
 
+        // Top row: status + profile navigation
         RowLayout {
             spacing: 8
+            Layout.fillWidth: true
+
             Label {
                 text: controller.connected ? "Connected" : "Disconnected"
                 color: controller.connected ? "lightgreen" : "red"
@@ -30,6 +33,8 @@ ApplicationWindow {
                 text: controller.currentSetName +
                       " (" + (controller.currentSet + 1) + "/" + controller.setCount + ")"
             }
+            Item { Layout.fillWidth: true } // spacer
+
             Button {
                 text: "<"
                 enabled: controller.currentSet > 0
@@ -42,17 +47,21 @@ ApplicationWindow {
             }
         }
 
+        // Middle: 16 buttons
         GridLayout {
             columns: 4
             columnSpacing: 8
-            rowSpacing: 8
+            rowSpacing: 18
+            Layout.fillWidth: true
+
+            Layout.preferredHeight: 250
 
             Repeater {
                 model: 16
                 Button {
                     id: btn
                     Layout.fillWidth: true
-
+                    Layout.fillHeight: true
                     property color baseColor: {
                         var cols = controller.buttonColors
                         if (cols.length > index) return cols[index]
@@ -79,43 +88,67 @@ ApplicationWindow {
                         verticalAlignment: Text.AlignVCenter
                     }
 
-                    onPressed: controller.sendButton(index, true)
+                    onPressed:  controller.sendButton(index, true)
                     onReleased: controller.sendButton(index, false)
                 }
             }
         }
 
-        ColumnLayout {
-            spacing: 4
+        // Spacer to push encoder area to the bottom
+        Item {
+            Layout.fillHeight: true
+        }
+
+        // Bottom: encoder labels + values + bars
+        RowLayout {
+            Layout.fillWidth: true
+            spacing: 12
+
             Repeater {
                 model: 8
-                RowLayout {
-                    spacing: 8
+
+                ColumnLayout {
+                    Layout.fillWidth: true
+                    Layout.alignment: Qt.AlignBottom
+                    spacing: 2
+
+                    // Encoder text label
                     Label {
                         text: {
                             var labels = controller.labelTexts
                             if (labels.length > index) return labels[index]
                             return "Enc " + index
                         }
-                        Layout.preferredWidth: 90
+                        horizontalAlignment: Text.AlignHCenter
+                        Layout.alignment: Qt.AlignHCenter
+                        font.pixelSize: 14
                     }
+
+                    // Encoder value label
                     Label {
                         text: {
                             var vals = controller.rotaryValues
                             if (vals.length > index) return vals[index]
                             return 0
                         }
-                        Layout.preferredWidth: 40
+                        horizontalAlignment: Text.AlignHCenter
+                        Layout.alignment: Qt.AlignHCenter
+                        font.pixelSize: 12
+                        color: "#cccccc"
                     }
+
+                    // Value bar
                     Rectangle {
                         Layout.fillWidth: true
-                        height: 8
-                        radius: 4
+                        height: 10
+                        radius: 5
                         color: "#333"
+
                         Rectangle {
                             anchors.left: parent.left
                             anchors.verticalCenter: parent.verticalCenter
                             height: parent.height
+                            radius: 5
                             width: {
                                 var vals = controller.rotaryValues
                                 var v = (vals.length > index) ? vals[index] : 0
